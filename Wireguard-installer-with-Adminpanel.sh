@@ -143,7 +143,7 @@ function installWireGuard() {
 			echo "{
 \"admin_tg_id\": ${ADMIN_ID_BOT},
 \"one_month_cost\": 80,
-\"trial_period\": 20,
+\"trial_period\": 1200,
 \"UTC_time\": 3,
 \"tg_token\": \"${API_TOKEN_BOT}\",
 \"url_redirect_to_pay\": \"https://zxcvbnm.online/?id=\",
