@@ -116,8 +116,8 @@ function installQuestions() {
 	
 	if [[ ${BOT_AUTO_INSTALL} == '1' ]]; then
 		read -rp "Vvedite API-klyuch ot vashego Telegram bota: " -e API_TOKEN_BOT
-		read -rp "Vvedite klyuch ot vashej platezhnoj sistemy(Esli ostavit' pustym, to pol'zovateli ne smogut proizvesti onlajn oplatu): " -e API_PAYMENT_BOT
 		read -rp "Vvedite Telegram-id administratora: " -e ADMIN_ID_BOT
+		read -rp "Vvedite QIWI-API : " -e QIWI_PAYMENT_KEY
 	fi
 	echo ""
 	echo "Otlichno vse osnovnye danny vvedeny!"
@@ -142,11 +142,13 @@ function installWireGuard() {
 			pip install -r "$(pwd)/OMGVPN-master/requirements.txt"
 			echo "{
 \"admin_tg_id\": ${ADMIN_ID_BOT},
-\"one_month_cost\": 120,
-\"trial_period\": 0,
+\"one_month_cost\": 80,
+\"trial_period\": 20,
 \"UTC_time\": 3,
 \"tg_token\": \"${API_TOKEN_BOT}\",
-\"tg_shop_token\": \"${API_PAYMENT_BOT}\"
+\"url_redirect_to_pay\": \"https://zxcvbnm.online/?id=\",
+\"qiwi_theme_code\": \"Georgyi-BgLUddxp9-\",
+\"qiwi_key\": \"${QIWI_PAYMENT_KEY}\"
 }" >"$(pwd)/OMGVPN-master/config.json"
 			chmod 744 -R $(pwd)/OMGVPN-master/
 			echo "[Unit]
