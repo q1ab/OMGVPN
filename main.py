@@ -346,7 +346,7 @@ async def Work_with_Message(m: types.Message):
                 Butt_delete_account = types.InlineKeyboardMarkup()
                 Butt_delete_account.add(types.InlineKeyboardButton(e.emojize("Удалить пользователя :cross_mark:"), callback_data=f'DELETE:{str(i[0])}'))
 
-                config = open(f'wg0-client-{str(str(i[1]))}.conf', 'rb')
+                config = open(f'/root/wg0-client-{str(str(i[1]))}.conf', 'rb')
                 await bot.send_document(chat_id=m.chat.id, document=config,
                                         visible_file_name=f"{str(str(i[1]))}.conf",
                                         caption=f"Пользователь: <code>{str(i[1])}</code>", parse_mode="HTML",
