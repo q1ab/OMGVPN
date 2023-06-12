@@ -399,7 +399,7 @@ async def Work_with_Message(m: types.Message):
                 types.InlineKeyboardButton(e.emojize("Проверить VPN"),
                                            url="https://2ip.ru/"))
             config = open(f'/root/wg0-client-{str(user_dat.tgid)}.conf', 'rb')
-            await bot.send_document(chat_id=m.chat.id,document=config,visible_file_name=f"{str(user_dat)}_{(datetime.now().date())}.conf",caption=texts_for_bot["how_to_connect_info"],parse_mode="HTML",reply_markup=Butt_how_to)
+            await bot.send_document(chat_id=m.chat.id,document=config,visible_file_name=f"{str(user_dat.tgid)}_{(datetime.now().date())}.conf",caption=texts_for_bot["how_to_connect_info"],parse_mode="HTML",reply_markup=Butt_how_to)
         else:
             await bot.send_message(chat_id=m.chat.id,text="Сначала нужно купить подписку!")
 
