@@ -108,7 +108,7 @@ async def Work_with_Message(m: types.Message):
     if e.demojize(m.text) == "Да":
         db = await aiosqlite.connect(DBCONNECT)
         db.row_factory = sqlite3.Row
-        await db.execute(f"Update userss set subscription = ?, banned=false, notion_oneday=true where tgid=?",(str(int(time.time())), tgid))
+        await db.execute(f"Update userss set subscription = ?, banned=true, notion_oneday=true where tgid=?",(str(int(time.time())), tgid))
         await db.commit()
         await bot.send_message(m.from_user.id,"Время сброшено!")
 
@@ -398,7 +398,7 @@ async def Work_with_Message(m: types.Message):
             Butt_how_to.add(
                 types.InlineKeyboardButton(e.emojize("Проверить VPN"),
                                            url="https://2ip.ru/"))
-            config = open(f'wg0-client-{str(user_dat.tgid)}.conf', 'rb')
+            config = open(f'/root/wg0-client-{str(user_dat.tgid)}.conf', 'rb')
             await bot.send_document(chat_id=m.chat.id,document=config,visible_file_name=f"{str(user_dat.tgid)}.conf",caption=texts_for_bot["how_to_connect_info"],parse_mode="HTML",reply_markup=Butt_how_to)
         else:
             await bot.send_message(chat_id=m.chat.id,text="Сначала нужно купить подписку!")
