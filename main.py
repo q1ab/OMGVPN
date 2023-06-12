@@ -58,8 +58,8 @@ class MyStates(StatesGroup):
 
 @bot.message_handler(commands=['start'])
 async def start(message:types.Message):
-    print(await bot.get_chat(message.chat.id))
     if message.chat.type == "private":
+        await bot.delete_state(message.from_user.id)
         user_dat = await User.GetInfo(message.chat.id)
         if user_dat.registered:
             await bot.send_message(message.chat.id,"Информация о подписке",parse_mode="HTML",reply_markup=await main_buttons(user_dat))
